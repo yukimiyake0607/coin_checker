@@ -95,13 +95,3 @@ class _PriceScreenState extends State<PriceScreen> {
     );
   }
 }
-
-
-// DropdownButton<String>(
-//                 value: _selectedItem,
-//                 items: getDropdownItem(),
-//                 onChanged: (String? value) {
-//                   setState(() {
-//                     _selectedItem = value!;
-//                   });
-//                 }),
