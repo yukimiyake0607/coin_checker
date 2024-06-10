@@ -68,17 +68,27 @@ class _PriceScreenState extends State<PriceScreen> {
             alignment: Alignment.center,
             padding: EdgeInsets.only(bottom: 30.0),
             color: Colors.lightBlue,
-            child: DropdownButton<String>(
-                value: _selectedItem,
-                items: getDropdownItem(),
-                onChanged: (String? value) {
-                  setState(() {
-                    _selectedItem = value!;
-                  });
-                }),
+            child: CupertinoPicker(
+              backgroundColor: Colors.lightBlue,
+              itemExtent: 32.0,
+              onSelectedItemChanged: (selectedindex) {
+                print(selectedindex);
+              },
+              children: getPickerItem(),
+            ),
           ),
         ],
       ),
     );
   }
 }
+
+
+// DropdownButton<String>(
+//                 value: _selectedItem,
+//                 items: getDropdownItem(),
+//                 onChanged: (String? value) {
+//                   setState(() {
+//                     _selectedItem = value!;
+//                   });
+//                 }),
