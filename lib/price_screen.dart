@@ -34,13 +34,21 @@ class _PriceScreenState extends State<PriceScreen> {
     );
   }
 
-  List<Widget> getPickerItem() {
+  CupertinoPicker iosPicker() {
     List<Widget> currencyText = [];
     for (String listNum in currenciesList) {
       Widget listNumText = Text(listNum);
       currencyText.add(listNumText);
     }
-    return currencyText;
+
+    return CupertinoPicker(
+      backgroundColor: Colors.lightBlue,
+      itemExtent: 32.0,
+      onSelectedItemChanged: (selectedindex) {
+        print(selectedindex);
+      },
+      children: currencyText,
+    );
   }
 
   @override
