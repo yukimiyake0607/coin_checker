@@ -10,7 +10,7 @@ class PriceScreen extends StatefulWidget {
 class _PriceScreenState extends State<PriceScreen> {
   String _selectedItem = 'AUD';
 
-  List<DropdownMenuItem<String>> getDropdownItem() {
+  DropdownButton<String> androidDropdownButton() {
     List<DropdownMenuItem<String>> dropdownLists = [];
     for (int i = 0; i < currenciesList.length; i++) {
       String currency = currenciesList[i];
@@ -20,7 +20,18 @@ class _PriceScreenState extends State<PriceScreen> {
       );
       dropdownLists.add(newItem);
     }
-    return dropdownLists;
+
+    return DropdownButton<String>(
+      value: _selectedItem,
+      items: dropdownLists,
+      onChanged: (String? value) {
+        setState(
+          () {
+            _selectedItem = value!;
+          },
+        );
+      },
+    );
   }
 
   List<Widget> getPickerItem() {
