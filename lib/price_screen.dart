@@ -1,7 +1,22 @@
+import 'package:coin_checker/http.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'coin_data.dart';
 import 'dart:io' show Platform;
+
+const String coinApiUrl = 'https://rest.coinapi.io/v1/exchangerate';
+double _rate = 0.0;
+
+Future<dynamic> getCoinData() async {
+  String internationalCurrency = 'USD';
+  String virtualCurrency = 'BTC';
+
+  final String url = '$coinApiUrl/$virtualCurrency/$internationalCurrency';
+
+  NetworkHelper networkHelper = NetworkHelper(url: url);
+  var coinData = await networkHelper.getData();
+  return coinData;
+}
 
 class PriceScreen extends StatefulWidget {
   @override
@@ -45,11 +60,27 @@ class _PriceScreenState extends State<PriceScreen> {
     return CupertinoPicker(
       backgroundColor: Colors.lightBlue,
       itemExtent: 32.0,
-      onSelectedItemChanged: (selectedindex) {
-        print(selectedindex);
-      },
+      onSelectedItemChanged: (selectedindex) {},
       children: currencyText,
     );
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    updateRate();
+  }
+
+  void updateRate() async {
+    try {
+      var coinData = await getCoinData();
+      setState(() {
+        _rate = coinData['rate'];
+      });
+    } catch (e) {
+      print('e');
+    }
   }
 
   @override
@@ -73,7 +104,7 @@ class _PriceScreenState extends State<PriceScreen> {
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
                 child: Text(
-                  '1 BTC = ? USD',
+                  '1 BTC = ${_rate.toInt()} USD',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 20.0,
