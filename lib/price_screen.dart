@@ -8,8 +8,8 @@ const String coinApiUrl = 'https://rest.coinapi.io/v1/exchangerate';
 double _rate = 0.0;
 
 Future<dynamic> getCoinData() async {
-  String internationalCurrency = 'USD';
   String virtualCurrency = 'BTC';
+  String internationalCurrency = 'USD';
 
   final String url = '$coinApiUrl/$virtualCurrency/$internationalCurrency';
 
