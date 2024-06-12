@@ -6,12 +6,12 @@ import 'dart:io' show Platform;
 
 const String coinApiUrl = 'https://rest.coinapi.io/v1/exchangerate';
 double _rate = 0.0;
+String _selectedItem = 'AUD';
 
 Future<dynamic> getCoinData() async {
   String virtualCurrency = 'BTC';
-  String internationalCurrency = 'USD';
 
-  final String url = '$coinApiUrl/$virtualCurrency/$internationalCurrency';
+  final String url = '$coinApiUrl/$virtualCurrency/$_selectedItem';
 
   NetworkHelper networkHelper = NetworkHelper(url: url);
   var coinData = await networkHelper.getData();
@@ -24,8 +24,6 @@ class PriceScreen extends StatefulWidget {
 }
 
 class _PriceScreenState extends State<PriceScreen> {
-  String _selectedItem = 'AUD';
-
   DropdownButton<String> androidDropdownButton() {
     List<DropdownMenuItem<String>> dropdownLists = [];
     for (int i = 0; i < currenciesList.length; i++) {
