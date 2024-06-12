@@ -108,7 +108,7 @@ class _PriceScreenState extends State<PriceScreen> {
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
                 child: Text(
-                  '1 BTC = ${_rate.toInt()} USD',
+                  '1 BTC = ${_rate.toInt()} ${_selectedItem}',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 20.0,
