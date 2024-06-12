@@ -42,6 +42,7 @@ class _PriceScreenState extends State<PriceScreen> {
         setState(
           () {
             _selectedItem = value!;
+            updateRate();
           },
         );
       },
@@ -58,7 +59,12 @@ class _PriceScreenState extends State<PriceScreen> {
     return CupertinoPicker(
       backgroundColor: Colors.lightBlue,
       itemExtent: 32.0,
-      onSelectedItemChanged: (selectedindex) {},
+      onSelectedItemChanged: (selectedindex) {
+        setState(() {
+          _selectedItem = currenciesList[selectedindex];
+          updateRate();
+        });
+      },
       children: currencyText,
     );
   }
