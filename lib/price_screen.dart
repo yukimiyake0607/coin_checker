@@ -97,7 +97,7 @@ class _PriceScreenState extends State<PriceScreen> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          CoinRateCard(),
+          CoinRateCard(cryptoListNumber: 0,),
           Container(
             height: 150.0,
             alignment: Alignment.center,
