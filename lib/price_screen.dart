@@ -112,7 +112,9 @@ class _PriceScreenState extends State<PriceScreen> {
 }
 
 class CoinRateCard extends StatefulWidget {
-  const CoinRateCard({super.key});
+  final int cryptoListNumber;
+
+  const CoinRateCard({Key? key, required this.cryptoListNumber}) : super(key: key);
 
   @override
   State<CoinRateCard> createState() => _CoinRateCardState();
@@ -132,7 +134,7 @@ class _CoinRateCardState extends State<CoinRateCard> {
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
           child: Text(
-            '1 ${cryptoList[0]} = ${_rate.toInt()} ${_selectedItem}',
+            '1 ${cryptoList[widget.cryptoListNumber]} = ${_rate.toInt()} ${_selectedItem}',
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 20.0,
