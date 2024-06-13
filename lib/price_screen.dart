@@ -93,10 +93,12 @@ class _PriceScreenState extends State<PriceScreen> {
         title: const Text('🤑 Coin Ticker'),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          const CoinRateCard(cryptoListNumber: 0,),
+          const CoinRateCard(cryptoListNumber: 0),
+          const CoinRateCard(cryptoListNumber: 1),
+          const CoinRateCard(cryptoListNumber: 2),
+          const Spacer(),
           Container(
             height: 150.0,
             alignment: Alignment.center,
@@ -113,7 +115,8 @@ class _PriceScreenState extends State<PriceScreen> {
 class CoinRateCard extends StatefulWidget {
   final int cryptoListNumber;
 
-  const CoinRateCard({Key? key, required this.cryptoListNumber}) : super(key: key);
+  const CoinRateCard({Key? key, required this.cryptoListNumber})
+      : super(key: key);
 
   @override
   State<CoinRateCard> createState() => _CoinRateCardState();
